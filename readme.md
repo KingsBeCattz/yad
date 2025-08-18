@@ -79,18 +79,18 @@ YAD uses 4 bits to indicate the type. The existing types are shown below.
 ### 📝 Example
 YAD Example File (human-readable)
 
-| Byte(s)                    | Meaning                                                                    |
-|----------------------------|----------------------------------------------------------------------------|
-| F0 01 00 00                | Version header: F0 = version token, 01 00 00 = version 1.0.0               |
-| F1                         | Start of row                                                               |
-| 64 00 00 00 00 75 73 65 72 | Row name: 6X = row name type, X4 = length 8-bit, bytes = "user"            |
-| 71 00 00 00 00 00 00 69 64 | Key name: 7X = key type, X1 = length 8-bit, bytes = "id"                   |
-| 11 2A                      | Value: 11 = uint8 type, 2A = 42 (decimal)                                  |
-| 71 00 00 00 00 6E 61 6D 65 | Key name: 7X = key type, X1 = length 8-bit, bytes = "name"                 |
-| 41 00 00 00 4A 6F 68 61 6E | Value: 4X = string type, X1 = length 8-bit, 05 bytes long, UTF-8 = "Johan" |
-| F2                         | End of row                                                                 |
+| Byte(s)              | Meaning                                                                    |
+|----------------------|----------------------------------------------------------------------------|
+| F0 01 00 00          | Version header: F0 = version token, 01 00 00 = version 1.0.0               |
+| F1                   | Start of row                                                               |
+| 64 04 75 73 65 72    | Row name: 6X = row name type, 04 = length in 8-bit, bytes = "user"         |
+| 71 02 69 64          | Key name: 7X = key type, 02 = length 8-bit, bytes = "id"                   |
+| 11 2A                | Value: 11 = uint8 type, 2A = 42 (decimal)                                  |
+| 71 04 6E 61 6D 65    | Key name: 7X = key type, 04 = length 8-bit, bytes = "name"                 |
+| 41 05 4A 6F 68 61 6E | Value: 4X = string type, 05 = length 8-bit, 05 bytes long, UTF-8 = "Johan" |
+| F2                   | End of row                                                                 |
 
 Or in a raw file:
 ```
-F0 01 00 00 F1 64 00 00 00 00 75 73 65 72 71 00 00 00 00 00 00 69 64 11 2A 71 00 00 00 00 6E 61 6D 65 41 00 00 00 4A 6F 68 61 6E F2
+F0 01 00 00 F1 64 04 75 73 65 72 71 04 69 64 11 2A 71 04 6E 61 6D 65 41 05 4A 6F 68 61 6E F2
 ```
