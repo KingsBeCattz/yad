@@ -14,13 +14,13 @@ Its goal is to provide a compact, tokenized, and easy-to-parse format while keep
   Each value begins with a type token, making parsing fast and predictable without the need for complex text parsing.
 
 - **Rich numeric support**  
-  Distinguishes between signed, unsigned, and floating-point numbers across multiple sizes, from **8 bits up to 128 bits**.
+  Distinguishes between signed, unsigned, and floating-point numbers across multiple sizes, from **8 bits up to 64 bits**.
 
 - **Minimalist compared to BSON**  
   Avoids rarely used types like `null`, `date`, `regex`, or `ObjectId`, focusing only on core data types.
 
 - **Flexible string and array lengths**  
-  Each string or array can explicitly declare its length (8, 16, 32, or 128 bits), reducing overhead for small values and allowing large ones when needed.
+  Each string or array can explicitly declare its length (8, 16, 32, or 64 bits), reducing overhead for small values and allowing large ones when needed.
 
 - **Hex-dump friendly**  
   Unlike JSON, YAD is designed to be **readable and understandable** when inspected with a hex editor or dumper.
