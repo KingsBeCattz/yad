@@ -1,5 +1,5 @@
 [package]
-name = "yad"
+name = "yad_core"
 version = "0.1.0"
 edition = "2024"
 authors = ["KingBCats <johan@ezezzz.xyz>"]
