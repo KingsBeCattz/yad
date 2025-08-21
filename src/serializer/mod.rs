@@ -26,8 +26,8 @@ use crate::core::yad::YAD;
 ///
 /// # Examples
 /// ```rust
-/// let yad = YAD::new(); // Assume YAD is properly constructed
-/// let bytes = serialize(&yad)?;
+/// let yad = yad::YAD::new(); // Assume YAD is properly constructed
+/// let bytes = yad::serialize(&yad)?;
 /// assert!(!bytes.is_empty());
 /// ```
 ///
