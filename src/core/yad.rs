@@ -2,6 +2,13 @@ use std::collections::HashMap;
 use crate::core::row::Row;
 use crate::core::version::Version;
 
+pub const YAD_CURRENT_VERSION: Version = Version {
+    major: 1,
+    minor: 0,
+    patch: 0,
+    beta: 0
+};
+
 #[derive(Clone, Eq, PartialEq, Debug)]
 pub struct YAD {
     pub version: Version,
