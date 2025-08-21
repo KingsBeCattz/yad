@@ -20,3 +20,6 @@ crate-type = ["cdylib", "rlib"]
 [[example]]
 name = "example"
 path = "examples/main.rs"
+
+[package.metadata.docs.rs]
+rustdoc-args = ["--generate-link-to-definition"]
