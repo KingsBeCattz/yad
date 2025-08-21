@@ -26,7 +26,7 @@ use crate::core::segment_keys;
 /// ## Creating a Row with Keys
 /// ```rust
 /// use std::collections::HashMap;
-/// use yad::core::{Row, Key, Value};
+/// use yad_core::core::{Row, Key, Value};
 ///
 /// let mut keys = HashMap::new();
 /// keys.insert("id".to_string(), Key::new("id".to_string(), Value::from_u8(1)));
@@ -44,7 +44,7 @@ use crate::core::segment_keys;
 /// ## Creating an Empty Row
 /// ```rust
 /// use std::collections::HashMap;
-/// use yad::core::Row;
+/// use yad_core::core::Row;
 ///
 /// let row = Row {
 ///     name: "Empty".to_string(),

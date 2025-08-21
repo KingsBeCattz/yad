@@ -1,5 +1,6 @@
-use crate::constants::error::ErrorMessage;
-use crate::core::YAD;
+use crate::*;
+use constants::error::ErrorMessage;
+use self::core::YAD;
 
 /// Serializes a [`YAD`] structure into its binary representation.
 ///
@@ -26,8 +27,8 @@ use crate::core::YAD;
 ///
 /// # Examples
 /// ```rust
-/// let yad = yad::YAD::new(); // Assume YAD is properly constructed
-/// let bytes = yad::serialize(&yad)?;
+/// let yad = yad_core::YAD::new();
+/// let bytes = yad_core::serialize(&yad)?;
 /// assert!(!bytes.is_empty());
 /// ```
 ///

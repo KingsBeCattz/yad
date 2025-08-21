@@ -1,9 +1,7 @@
 use std::collections::HashMap;
 use crate::constants::error::ErrorMessage;
-use crate::core::Row;
-use crate::core::segment_rows;
-use crate::core::Version;
-use crate::core::YAD;
+use crate::*;
+use self::core::*;
 
 /// Deserializes a binary buffer into a [`YAD`] structure.
 ///
@@ -33,7 +31,7 @@ use crate::core::YAD;
 /// # Examples
 /// ```rust
 /// let bytes: Vec<u8> = vec![/* valid serialized YAD data */];
-/// let yad = yad::deserialize(bytes)?;
+/// let yad = yad_core::deserialize(bytes)?;
 /// // `yad` now contains the reconstructed structure
 /// ```
 ///

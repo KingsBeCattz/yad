@@ -15,7 +15,7 @@ use crate::core::value::Value;
 ///
 /// # Examples
 /// ```rust
-/// use yad::core::{Key, Value};
+/// use yad_core::core::{Key, Value};
 ///
 /// let value = Value::from_u8(42);
 /// let key = Key::new("id".to_string(), value);
@@ -42,7 +42,7 @@ impl Key {
     ///
     /// # Examples
     /// ```rust
-    /// use yad::core::{Key, Value};
+    /// use yad_core::core::{Key, Value};
     ///
     /// let value = Value::from_u8(255);
     /// let key = Key::new("max_value".to_string(), value);
@@ -75,7 +75,7 @@ impl Key {
     ///
     /// # Examples
     /// ```rust
-    /// use yad::core::{Key, Value};
+    /// use yad_core::core::{Key, Value};
     ///
     /// let key = Key::new("id".to_string(), Value::from_u8(42));
     ///
@@ -136,7 +136,7 @@ impl Key {
     ///
     /// # Examples
     /// ```rust
-    /// use yad::core::{Key, Value};
+    /// use yad_core::core::{Key, Value};
     ///
     /// let key = Key::new("username".to_string(), Value::from_string("Alice".to_string()).unwrap());
     /// let bytes = key.encode().unwrap();

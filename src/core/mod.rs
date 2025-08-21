@@ -37,7 +37,7 @@ pub use yad::*;
 ///
 /// # Examples
 /// ```rust
-/// use yad::core::segment;
+/// use yad_core::core::segment;
 ///
 /// let data = vec![0x01, 0x02, 0x03, 0x04, 0x02];
 /// let segments = segment(data, &0x01, &0x04);
@@ -80,8 +80,8 @@ pub fn segment<B: AsRef<Vec<u8>>>(bytes: B, start: &u8, end: &u8) -> Vec<Vec<u8>
 ///
 /// # Examples
 /// ```rust
-/// use yad::constants::headers::*;
-/// use yad::core::segment_keys;
+/// use yad_core::constants::headers::*;
+/// use yad_core::core::segment_keys;
 ///
 /// let bytes = vec![KEY_START, 1, KEY_END, KEY_START, 2, KEY_END];
 /// let keys = segment_keys(bytes);
@@ -105,8 +105,8 @@ pub fn segment_keys<B: AsRef<Vec<u8>>>(bytes: B) -> Vec<Vec<u8>> {
 ///
 /// # Examples
 /// ```rust
-/// use yad::constants::headers::*;
-/// use yad::core::segment_rows;
+/// use yad_core::constants::headers::*;
+/// use yad_core::core::segment_rows;
 ///
 /// let bytes = vec![ROW_START, 1, ROW_END, ROW_START, 2, ROW_END];
 /// let rows = segment_rows(bytes);

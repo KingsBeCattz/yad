@@ -26,22 +26,23 @@ pub const YAD_CURRENT_VERSION: Version = Version {
 /// # Examples
 /// ```rust
 /// use std::collections::HashMap;
-/// use yad::core::Row;
-/// use yad::YAD;
-/// let mut yad = YAD::new();
+/// use yad_core::core::Row;
+/// use yad_core::YAD;
+/// 
+/// let mut yad_core = YAD::new();
 ///
 /// // Add a row
 /// let row = Row::new("User".to_string(), HashMap::new());
-/// yad.add_row(row);
+/// yad_core.add_row(row);
 ///
 /// // Retrieve the row
-/// let retrieved = yad.get_row("User");
+/// let retrieved = yad_core.get_row("User");
 /// assert!(retrieved.is_some());
 ///
 /// // Remove the row
-/// let removed = yad.remove_row("User");
+/// let removed = yad_core.remove_row("User");
 /// assert!(removed.is_some());
-/// assert!(yad.get_row("User").is_none());
+/// assert!(yad_core.get_row("User").is_none());
 /// ```
 #[derive(Clone, Eq, PartialEq, Debug)]
 pub struct YAD {
@@ -62,15 +63,15 @@ impl YAD {
     /// Creates a new empty [`YAD`] instance.
     ///
     /// # Returns
-    /// - A [`YAD`] with its [`version`](YAD::version) set to [`YAD_CURRENT_VERSION`].
+    /// - A [`YAD`] with its [`version`](Version) set to [`YAD_CURRENT_VERSION`].
     /// - Its [`rows`](YAD::rows) initialized as an empty `HashMap`.
     ///
     /// # Examples
     /// ```rust
-    /// use yad::YAD;
+    /// use yad_core::YAD;
     ///
-    /// let yad = YAD::new();
-    /// assert!(yad.rows.is_empty());
+    /// let yad_core = YAD::new();
+    /// assert!(yad_core.rows.is_empty());
     /// ```
     pub fn new() -> Self {
         Self {
@@ -91,13 +92,13 @@ impl YAD {
     /// # Examples
     /// ```rust
     /// use std::collections::HashMap;
-    /// use yad::core::Row;
-    /// use yad::YAD;
-    /// let mut yad = YAD::new();
+    /// use yad_core::core::Row;
+    /// use yad_core::YAD;
+    /// let mut yad_core = YAD::new();
     ///
     /// let row = Row { name: "Config".to_string(), keys: HashMap::new() };
-    /// yad.add_row(row);
-    /// assert!(yad.get_row("Config").is_some());
+    /// yad_core.add_row(row);
+    /// assert!(yad_core.get_row("Config").is_some());
     /// ```
     pub fn add_row(&mut self, row: Row) {
         self.rows.insert(row.name.clone(), row);
@@ -115,15 +116,15 @@ impl YAD {
     /// # Examples
     /// ```rust
     /// use std::collections::HashMap;
-    /// use yad::core::Row;
-    /// use yad::YAD;
-    /// let mut yad = YAD::new();
+    /// use yad_core::core::Row;
+    /// use yad_core::YAD;
+    /// let mut yad_core = YAD::new();
     ///
     /// let row = Row { name: "Settings".to_string(), keys: HashMap::new() };
-    /// yad.add_row(row);
+    /// yad_core.add_row(row);
     ///
-    /// assert!(yad.get_row("Settings").is_some());
-    /// assert!(yad.get_row("Missing").is_none());
+    /// assert!(yad_core.get_row("Settings").is_some());
+    /// assert!(yad_core.get_row("Missing").is_none());
     /// ```
     pub fn get_row(&self, key: &str) -> Option<&Row> {
         self.rows.get(key)
@@ -141,16 +142,16 @@ impl YAD {
     /// # Examples
     /// ```rust
     /// use std::collections::HashMap;
-    /// use yad::core::Row;
-    /// use yad::YAD;
+    /// use yad_core::core::Row;
+    /// use yad_core::YAD;
     ///
-    /// let mut yad = YAD::new();
+    /// let mut yad_core = YAD::new();
     /// let row = Row { name: "Cache".to_string(), keys: HashMap::new() };
-    /// yad.add_row(row);
+    /// yad_core.add_row(row);
     ///
-    /// let removed = yad.remove_row("Cache");
+    /// let removed = yad_core.remove_row("Cache");
     /// assert!(removed.is_some());
-    /// assert!(yad.get_row("Cache").is_none());
+    /// assert!(yad_core.get_row("Cache").is_none());
     /// ```
     pub fn remove_row(&mut self, key: &str) -> Option<Row> {
         self.rows.remove(key)

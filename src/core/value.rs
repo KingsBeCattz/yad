@@ -24,9 +24,9 @@ use float16::f16;
 /// # Examples
 /// ## Numeric Value
 /// ```rust
-/// use yad::constants::*;
+/// use yad_core::constants::*;
 ///
-/// yad::core::Value {
+/// yad_core::core::Value {
 ///     r#type: types::Type::Uint,       // Unsigned integer
 ///     length: length::ByteLength::One, // Stored in a single byte
 ///     bytes: vec![11, 42],             // 11 = Uint8 , 42 = Actual number
@@ -35,9 +35,9 @@ use float16::f16;
 ///
 /// ## UTF-8 String
 /// ```rust
-/// use yad::constants::*;
+/// use yad_core::constants::*;
 ///
-/// yad::core::Value {
+/// yad_core::core::Value {
 ///     r#type: types::Type::String,
 ///     length: length::ByteLength::Two,  // Uses 1 byte to describe string length
 ///     bytes: vec![65, 5, b'H', b'e', b'l', b'l', b'o'],

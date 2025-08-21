@@ -1,6 +1,6 @@
 use std::collections::HashMap;
-use yad::core::{Key, Row, Value};
-use yad::{deserialize, serialize, YAD};
+use yad_core::core::{Key, Row, Value};
+use yad_core::{deserialize, serialize, YAD};
 
 fn main() {
     let mut yad = YAD::new();

@@ -29,7 +29,7 @@ use crate::constants::headers::VERSION_HEADER;
 /// # Examples
 /// ## Creating a Stable Version
 /// ```rust
-/// use yad::core::Version;
+/// use yad_core::core::Version;
 ///
 /// let v = Version::new(1, 0, 0, 0);
 /// assert_eq!(v.major, 1);
@@ -38,7 +38,7 @@ use crate::constants::headers::VERSION_HEADER;
 ///
 /// ## Creating a Beta Version
 /// ```rust
-/// use yad::core::Version;
+/// use yad_core::core::Version;
 ///
 /// let v = Version::new(1, 1, 0, 2);
 /// assert_eq!(v.minor, 1);
@@ -73,7 +73,7 @@ impl Version {
     ///
     /// # Examples
     /// ```rust
-    /// use yad::core::Version;
+    /// use yad_core::core::Version;
     ///
     /// let v = Version::new(1, 0, 0, 0);
     /// assert_eq!(v.major, 1);
@@ -108,8 +108,8 @@ impl Version {
     ///
     /// # Examples
     /// ```rust
-    /// use yad::constants::headers::VERSION_HEADER;
-    /// use yad::core::Version;
+    /// use yad_core::constants::headers::VERSION_HEADER;
+    /// use yad_core::core::Version;
     ///
     /// let data = vec![VERSION_HEADER, 1, 0, 2, 0];
     /// let version = Version::decode(data).unwrap();
@@ -143,8 +143,8 @@ impl Version {
     ///
     /// # Examples
     /// ```rust
-    /// use yad::constants::headers::VERSION_HEADER;
-    /// use yad::core::Version;
+    /// use yad_core::constants::headers::VERSION_HEADER;
+    /// use yad_core::core::Version;
     ///
     /// let v = Version::new(1, 0, 0, 0);
     /// let bytes = v.serialize();
