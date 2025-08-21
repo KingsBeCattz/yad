@@ -87,7 +87,7 @@ impl Value {
     ///
     /// The returned `Value` contains the entire encoded chunk (header + length-field + payload)
     /// in its `bytes` field. All length/bounds validations map to your `ErrorMessage` constants.
-    pub fn decode(mut vec: Vec<u8>) -> Result<Self, ErrorMessage> {
+    pub fn decode(vec: Vec<u8>) -> Result<Self, ErrorMessage> {
         if vec.len() < 1 {
             Err(ErrorMessage(NOT_ENOUGH_BYTES))?
         }
