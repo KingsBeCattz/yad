@@ -1,5 +1,5 @@
 use crate::constants::error::ErrorMessage;
-use crate::core::yad::YAD;
+use crate::core::YAD;
 
 /// Serializes a [`YAD`] structure into its binary representation.
 ///
