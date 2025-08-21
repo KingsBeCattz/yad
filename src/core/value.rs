@@ -4,6 +4,56 @@ use crate::constants::types::{Type, ARRAY_TYPE, BOOLEAN_TYPE, FLOATING_POINT_TYP
 use float8::F8E4M3;
 use float16::f16;
 
+/// Represents a single value within the YAD binary format.
+///
+/// A [`Value`] encapsulates a piece of data stored in the YAD system,
+/// including its type, length, and raw binary representation.
+/// It acts as the fundamental unit of information, supporting multiple data kinds
+/// such as numbers, strings, arrays, or floating-point values.
+///
+/// # Structure Fields
+/// - [`type`](Value::r#type): Defines the semantic meaning of the value (e.g., unsigned integer, string).
+/// - [`length`](Value::length): Encodes the size of the value or the size descriptor length.
+/// - [`bytes`](Value::bytes): The raw binary content corresponding to the value.
+///
+/// # Invariants
+/// - The `length` field determines how the `bytes` field must be interpreted.
+/// - The `type` field enforces the semantic meaning of the `bytes`.
+/// - A mismatch between `type`, `length`, and `bytes` may result in invalid deserialization.
+///
+/// # Examples
+/// ## Numeric Value
+/// ```rust
+/// use yad::constants::*;
+///
+/// yad::core::Value {
+///     r#type: types::Type::Uint,       // Unsigned integer
+///     length: length::ByteLength::One, // Stored in a single byte
+///     bytes: vec![11, 42],             // 11 = Uint8 , 42 = Actual number
+/// }
+/// ```
+///
+/// ## UTF-8 String
+/// ```rust
+/// use yad::constants::*;
+///
+/// yad::core::Value {
+///     r#type: types::Type::String,
+///     length: length::ByteLength::Two,  // Uses 1 byte to describe string length
+///     bytes: vec![65, 5, b'H', b'e', b'l', b'l', b'o'],
+///     // 65 = Type and length indicator , 5 = Length of the string
+/// }
+/// ```
+///
+/// # Notes
+/// - A [`Value`] does not interpret its own contents; it only stores type,
+///   length, and raw bytes. Interpretation happens during deserialization or decoding.
+/// - The combination of `type` + `length` + `bytes` must always respect
+///   the **YAD binary specification** for validity.
+///
+/// # See Also
+/// - [`Type`] for all supported value types.
+/// - [`ByteLength`] for encoding how many bytes are used to store lengths.
 #[derive(Clone, Ord, PartialOrd, Eq, PartialEq, Debug)]
 pub struct Value {
     /// The type of the value, represented as a byte (e.g., `0x11`).
