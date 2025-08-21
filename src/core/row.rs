@@ -1,7 +1,6 @@
 use std::collections::HashMap;
-use std::ops::{Deref, DerefMut};
-use crate::constants::error::{ErrorMessage, MALFORMED_KEY_VECTOR, MALFORMED_ROW_VECTOR, MALFORMED_UTF8, NOT_ENOUGH_BYTES, STRING_MAX_LENGTH_EXCEEDED, STRING_OF_LENGTH_ZERO, VEC_MAX_LENGTH_EXCEEDED};
-use crate::constants::headers::{KEY_END, KEY_NAME, KEY_START, ROW_END, ROW_NAME, ROW_START};
+use crate::constants::error::{ErrorMessage, MALFORMED_ROW_VECTOR, MALFORMED_UTF8, NOT_ENOUGH_BYTES, STRING_MAX_LENGTH_EXCEEDED, STRING_OF_LENGTH_ZERO, VEC_MAX_LENGTH_EXCEEDED};
+use crate::constants::headers::{ROW_END, ROW_NAME, ROW_START};
 use crate::constants::length::ByteLength;
 use crate::core::key::Key;
 use crate::core::segment_keys;
