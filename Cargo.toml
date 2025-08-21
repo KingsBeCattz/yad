@@ -6,3 +6,6 @@ edition = "2024"
 [dependencies]
 float16 = "0.1.3"
 float8 = "0.4.2"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
