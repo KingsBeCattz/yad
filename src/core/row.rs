@@ -5,11 +5,82 @@ use crate::constants::length::ByteLength;
 use crate::core::key::Key;
 use crate::core::segment_keys;
 
+/// Represents a single row within the YAD data structure.
+///
+/// A [`Row`] is a named collection of [`Key`] objects, each uniquely identified
+/// by a string. Rows act as **logical containers** for keys, similar to documents
+/// in NoSQL databases or records in relational databases.
+///
+/// # Fields
+/// - [`name`](Row::name): The row's unique identifier.
+///   Typically used as a human-readable label to reference the row.
+/// - [`keys`](Row::keys): A map from string identifiers to [`Key`] objects,
+///   representing the actual data stored in the row.
+///
+/// # Invariants
+/// - Each key in [`keys`](Row::keys) must have a **unique name** within the row.
+/// - The `name` field should not be empty for a valid row.
+/// - A row may contain zero or more keys.
+///
+/// # Examples
+/// ## Creating a Row with Keys
+/// ```rust
+/// use std::collections::HashMap;
+/// use yad::core::{Row, Key, Value};
+///
+/// let mut keys = HashMap::new();
+/// keys.insert("id".to_string(), Key::new("id".to_string(), Value::from_u8(1)));
+/// keys.insert("username".to_string(), Key::new("username".to_string(), Value::from_string("Alice".to_string()).unwrap()));
+///
+/// let row = Row {
+///     name: "User".to_string(),
+///     keys,
+/// };
+///
+/// assert_eq!(row.name, "User");
+/// assert!(row.keys.contains_key("username"));
+/// ```
+///
+/// ## Creating an Empty Row
+/// ```rust
+/// use std::collections::HashMap;
+/// use yad::core::Row;
+///
+/// let row = Row {
+///     name: "Empty".to_string(),
+///     keys: HashMap::new(),
+/// };
+///
+/// assert!(row.keys.is_empty());
+/// ```
+///
+/// # Notes
+/// - A [`Row`] is conceptually equivalent to a **document** or **record** in
+///   other database systems.
+/// - Keys in the row store strongly typed [`Value`] objects.
+/// - Rows are the **second layer** of organization in YAD:
+///   1. [`YAD`] – the top-level container holding multiple rows.
+///   2. [`Row`] – holds multiple keys.
+///   3. [`Key`] – holds one or more [`Value`] objects.
+///
+/// # See Also
+/// - [`Key`] for details on individual data entries within a row.
+/// - [`YAD`] for the top-level container that aggregates multiple rows.
 #[derive(Clone, Eq, PartialEq, Debug)]
 pub struct Row {
+    /// The unique name or identifier of the row.
+    ///
+    /// - Typically used to reference the row logically or semantically.
+    /// - Should be non-empty for meaningful data organization.
     pub name: String,
-    pub keys: HashMap<String, Key>
+
+    /// A mapping of string identifiers to [`Key`] objects.
+    ///
+    /// - Each key represents a stored field or property within the row.
+    /// - The string identifier acts as the unique name of the field.
+    pub keys: HashMap<String, Key>,
 }
+
 
 impl Row {
     pub fn new(name: String, keys: HashMap<String, Key>) -> Self {
