@@ -1,6 +1,6 @@
 [package]
 name = "yad_core"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 authors = ["KingBCats <johan@ezezzz.xyz>"]
 description = "YAD is a lightweight binary file format designed for efficient data storage."
@@ -9,6 +9,7 @@ readme = "readme.md"
 keywords = ["yad", "nosql", "encode", "decode", "file_format"]
 categories = ["encoding","data-structures"]
 license = "MIT OR Apache-2.0"
+documentation = "https://docs.rs/yad_core"
 
 [dependencies]
 float16 = "0.1.3"
