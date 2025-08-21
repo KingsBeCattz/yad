@@ -4,7 +4,6 @@ use crate::constants::headers::{ROW_END, ROW_NAME, ROW_START};
 use crate::constants::length::ByteLength;
 use crate::core::key::Key;
 use crate::core::segment_keys;
-use crate::core::value::Value;
 
 #[derive(Clone, Eq, PartialEq, Debug)]
 pub struct Row {
