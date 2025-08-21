@@ -2,6 +2,13 @@
 name = "yad"
 version = "0.1.0"
 edition = "2024"
+authors = ["KingBCats <johan@ezezzz.xyz>"]
+description = "YAD is a lightweight binary file format designed for efficient data storage."
+repository = "https://github.com/KingsBeCattz/yad"
+readme = "readme.md"
+keywords = ["yad", "nosql", "encode", "decode", "file_format"]
+categories = ["encoding","data-structures"]
+license = "MIT OR Apache-2.0"
 
 [dependencies]
 float16 = "0.1.3"
@@ -9,3 +16,7 @@ float8 = "0.4.2"
 
 [lib]
 crate-type = ["cdylib", "rlib"]
+
+[[example]]
+name = "example"
+path = "examples/main.rs"
