@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="af5fcf95-47b6-44d2-9a77-08b7609a274f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/main.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/my_first_yad.yad" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/error.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/headers.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/length.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/mod.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/types.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/key.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/mod.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/row.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/value.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/version.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/yad.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/deserializer/mod.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/serializer/mod.rs" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "KingsBeCattz"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/KingsBeCattz/yad.git",
+    "accountId": "9fe2faba-be7d-4e63-bd7e-75be224f9d25"
+  }
+}]]></component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="Iv74qDn4" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3
+}]]></component>
+  <component name="ProjectId" id="31ki50MT6hY4UnBiSiWjZTrerP9" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.rust.reset.selective.auto.import": "true",
+    "git-widget-placeholder": "master",
+    "junie.onboarding.icon.badge.shown": "true",
+    "nodejs_package_manager_path": "pnpm",
+    "org.rust.cargo.project.model.PROJECT_DISCOVERY": "true",
+    "org.rust.first.attach.projects": "true",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RustProjectSettings">
+    <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="af5fcf95-47b6-44d2-9a77-08b7609a274f" name="Changes" comment="" />
+      <created>1756074286430</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1756074286430</updated>
+      <workItem from="1756074289165" duration="73000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
