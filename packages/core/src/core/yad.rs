@@ -130,6 +130,41 @@ impl YAD {
         self.rows.get(key)
     }
 
+    /// Retrieves a mutable reference to a [`Row`] by its name.
+    ///
+    /// This function is similar to [`get_row`](Self::get_row), but returns
+    /// a mutable reference, allowing direct modification of the row's content.
+    ///
+    /// # Parameters
+    /// - `key`: The row name to search for.
+    ///
+    /// # Returns
+    /// - `Some(&mut Row)` if a row with the given name exists.
+    /// - `None` if no row matches the provided key.
+    ///
+    /// # Examples
+    /// ```rust
+    /// use std::collections::HashMap;
+    /// use yad_core::core::Row;
+    /// use yad_core::YAD;
+    ///
+    /// let mut yad_core = YAD::new();
+    ///
+    /// let row = Row { name: "Config".to_string(), keys: HashMap::new() };
+    /// yad_core.add_row(row);
+    ///
+    /// if let Some(row_mut) = yad_core.get_row_mut("Config") {
+    ///     row_mut.name = "UpdatedConfig".to_string();
+    /// }
+    ///
+    /// assert!(yad_core.get_row("UpdatedConfig").is_some());
+    /// assert!(yad_core.get_row("Config").is_none());
+    /// ```
+    pub fn get_row_mut(&mut self, key: &str) -> Option<&mut Row> {
+        self.rows.get_mut(key)
+    }
+
+
     /// Removes a [`Row`] from the dataset by its name.
     ///
     /// # Parameters
