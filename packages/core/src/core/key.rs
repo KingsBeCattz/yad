@@ -170,4 +170,32 @@ impl Key {
 
         Ok(bytes)
     }
+
+    /// Updates the [`Value`] associated with this [`Key`].
+    ///
+    /// This method replaces the current stored value with a new one,
+    /// keeping the [`Key::name`] unchanged. It is useful when the identifier
+    /// of the key remains the same but its data needs to be modified.
+    ///
+    /// # Parameters
+    /// - `new_value`: The new [`Value`] to assign to this key.
+    ///
+    /// # Examples
+    /// ```rust
+    /// use yad_core::core::{Key, Value};
+    ///
+    /// let mut key = Key::new("score".to_string(), Value::from_u8(10));
+    /// assert_eq!(key.value, Value::from_u8(10));
+    ///
+    /// key.set_value(Value::from_u8(99));
+    /// assert_eq!(key.value, Value::from_u8(99));
+    /// ```
+    ///
+    /// # Notes
+    /// - The [`Key::name`] remains unchanged after calling this method.
+    /// - Replaces the old value entirely; it does not perform type checks
+    ///   or merges with the previous value.
+    pub fn set_value(&mut self, new_value: Value) {
+        self.value = new_value
+    }
 }
