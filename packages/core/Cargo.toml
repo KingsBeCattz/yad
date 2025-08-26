@@ -1,6 +1,6 @@
 [package]
 name = "yad_core"
-version = "0.1.2"
+version = "1.0.0"
 edition = "2024"
 authors = ["KingBCats <johan@ezezzz.xyz>"]
 description = "YAD is a lightweight binary file format designed for efficient data storage."
