@@ -25,9 +25,8 @@ This crate provides the **Rust core implementation** of the YAD format, includin
 
 Add the crate to your `Cargo.toml`:
 
-```toml
-[dependencies]
-yad-core = "0.1"
+```
+cargo add yad_core
 ```
 
 ### Example: Creating and serializing a YAD file
