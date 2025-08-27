@@ -2,6 +2,7 @@ use crate::constants::error::{ErrorMessage, MALFORMED_KEY_VECTOR, MALFORMED_UTF8
 use crate::constants::headers::{KEY_END, KEY_NAME, KEY_START};
 use crate::constants::length::ByteLength;
 use crate::core::value::Value;
+use crate::core::Version;
 
 /// Represents a key-value pair within a [`Row`] in YAD.
 ///
@@ -197,5 +198,11 @@ impl Key {
     ///   or merges with the previous value.
     pub fn set_value(&mut self, new_value: Value) {
         self.value = new_value
+    }
+}
+
+impl std::fmt::Display for Key {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}: {}", self.name, self.value)
     }
 }
