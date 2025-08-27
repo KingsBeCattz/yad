@@ -1,3 +1,5 @@
+use std::fmt;
+use std::fmt::{Display};
 use crate::constants::error::{ErrorMessage, MALFORMED_UTF8, NOT_AN_ARRAY, NOT_A_BOOL, NOT_A_FLOAT16, NOT_A_FLOAT32, NOT_A_FLOAT64, NOT_A_FLOAT8, NOT_A_INT16, NOT_A_INT32, NOT_A_INT64, NOT_A_INT8, NOT_A_NUMBER, NOT_A_STRING, NOT_A_UINT16, NOT_A_UINT32, NOT_A_UINT64, NOT_A_UINT8, NOT_ENOUGH_BYTES, STRING_MAX_LENGTH_EXCEEDED, STRING_OF_LENGTH_ZERO, VEC_MAX_LENGTH_EXCEEDED, VEC_OF_LENGTH_ZERO};
 use crate::constants::length::ByteLength;
 use crate::constants::types::{Type, FLOATING_POINT_TYPE};
@@ -962,6 +964,37 @@ impl FromYADNotation for String {
             Ok(string)
         } else {
             Err(ErrorMessage(MALFORMED_UTF8))
+        }
+    }
+}
+
+impl Display for Value {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self.r#type {
+            Type::Uint => match self.length {
+                ByteLength::One => write!(f, "{}", self.as_u8().ok().ok_or(fmt::Error)?),
+                ByteLength::Two => write!(f, "{}", self.as_u16().ok().ok_or(fmt::Error)?),
+                ByteLength::Four => write!(f, "{}", self.as_u32().ok().ok_or(fmt::Error)?),
+                ByteLength::Eight => write!(f, "{}", self.as_u64().ok().ok_or(fmt::Error)?),
+                _ => write!(f, "{:?}", self.bytes),
+            },
+            Type::Int => match self.length {
+                ByteLength::One => write!(f, "{}", self.as_i8().ok().ok_or(fmt::Error)?),
+                ByteLength::Two => write!(f, "{}", self.as_i16().ok().ok_or(fmt::Error)?),
+                ByteLength::Four => write!(f, "{}", self.as_i32().ok().ok_or(fmt::Error)?),
+                ByteLength::Eight => write!(f, "{}", self.as_i64().ok().ok_or(fmt::Error)?),
+                _ => write!(f, "{:?}", self.bytes),
+            },
+            Type::Float => match self.length {
+                ByteLength::One => write!(f, "{}", self.as_f8().ok().ok_or(fmt::Error)?),
+                ByteLength::Two => write!(f, "{}", self.as_f16().ok().ok_or(fmt::Error)?),
+                ByteLength::Four => write!(f, "{}", self.as_f32().ok().ok_or(fmt::Error)?),
+                ByteLength::Eight => write!(f, "{}", self.as_f64().ok().ok_or(fmt::Error)?),
+                _ => write!(f, "{:?}", self.bytes),
+            },
+            Type::String => write!(f, "{}", self.as_string().ok().ok_or(fmt::Error)?),
+            Type::Array => write!(f, "{:?}", self.as_array().ok().ok_or(fmt::Error)?),
+            Type::Bool | Type::True | Type::False => write!(f, "{}", self.as_bool().ok().ok_or(fmt::Error)?),
         }
     }
 }
