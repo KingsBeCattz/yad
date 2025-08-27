@@ -25,4 +25,6 @@ fn main() {
     std::fs::write("./examples/my_first_yad.yad", &yad_bin).unwrap();
 
     assert_eq!(yad, deserialize(yad_bin).unwrap());
+
+    println!("{}", yad);
 }

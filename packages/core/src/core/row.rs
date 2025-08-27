@@ -403,16 +403,10 @@ impl std::fmt::Display for Row {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         writeln!(f, "{}: {{", self.name)?;
 
-        for (i, key) in self.keys.values().enumerate() {
-            write!(f, "\t{}", key)?;
-
-            if i < self.keys.len() - 1 {
-                writeln!(f, ",")?;
-            } else {
-                writeln!(f)?;
-            }
+        for (_, key) in self.keys.values().enumerate() {
+            writeln!(f, "\t{}: {}", key.name, key.value)?;
         }
 
-        write!(f, "}}")
+        write!(f, "\t}}")
     }
 }

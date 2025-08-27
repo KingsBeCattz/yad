@@ -993,7 +993,24 @@ impl Display for Value {
                 _ => write!(f, "{:?}", self.bytes),
             },
             Type::String => write!(f, "{}", self.as_string().ok().ok_or(fmt::Error)?),
-            Type::Array => write!(f, "{:?}", self.as_array().ok().ok_or(fmt::Error)?),
+            Type::Array => {
+                let array = self.as_array().ok().ok_or(fmt::Error)?;
+                let mut string = String::new();
+
+                string.push('[');
+
+                for (i, item) in array.iter().enumerate() {
+                    string.push_str(format!("{}", item).as_str());
+
+                    if i < array.len() - 1 {
+                        string.push_str(", ");
+                    }
+                }
+
+                string.push(']');
+
+                write!(f, "{}", string)
+            },
             Type::Bool | Type::True | Type::False => write!(f, "{}", self.as_bool().ok().ok_or(fmt::Error)?),
         }
     }

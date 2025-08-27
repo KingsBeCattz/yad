@@ -210,7 +210,18 @@ impl std::fmt::Display for YAD {
         writeln!(f, "Version: {}\nRows: {{", self.version)?;
 
         for (i, row) in self.rows.values().enumerate() {
-            write!(f, "\t{}", row)?;
+            writeln!(f, " {}: {{", row.name)?;
+
+            for (i, (key_name, key)) in row.keys.iter().enumerate() {
+                write!(f, "  {}: {}", key_name, key.value)?;
+                if i < row.keys.len() - 1 {
+                    writeln!(f, ",")?;
+                } else {
+                    writeln!(f)?;
+                }
+            }
+
+            write!(f, " }}")?;
 
             if i < self.rows.len() - 1 {
                 writeln!(f, ",")?;
