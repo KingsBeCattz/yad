@@ -204,3 +204,21 @@ impl AsMut<YAD> for YAD {
         self
     }
 }
+
+impl std::fmt::Display for YAD {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        writeln!(f, "Version: {}\nRows: {{", self.version)?;
+
+        for (i, row) in self.rows.values().enumerate() {
+            write!(f, "\t{}", row)?;
+
+            if i < self.rows.len() - 1 {
+                writeln!(f, ",")?;
+            } else {
+                writeln!(f)?;
+            }
+        }
+
+        write!(f, "}}")
+    }
+}
