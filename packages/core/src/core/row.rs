@@ -266,7 +266,7 @@ impl Row {
     /// use yad_core::core::{Row, Value};
     ///
     /// let mut row = Row::new("User".to_string(), HashMap::new());
-    /// row.new_key("active", Value::from_bool(true));
+    /// row.new_key("active", Value::from_bool(true).unwrap());
     ///
     /// let keys = row.get_keys();
     /// assert!(keys.contains_key("active"));
