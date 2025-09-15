@@ -1,30 +1,12 @@
-use std::collections::HashMap;
-use yad_core::core::{Key, Row, Value};
-use yad_core::{deserialize, serialize, YAD};
+use yad_core::Value;
 
 fn main() {
-    let mut yad = YAD::new();
-
-    let mut johan_user = Row::new("johan".to_string(), HashMap::new());
-    johan_user.add_key(
-        Key::new("name".to_string(), Value::from_string("Johan".to_string()).unwrap())
-    );
-    johan_user.add_key(
-        Key::new("age".to_string(), Value::from_u8(17))
-    );
-
-    johan_user.add_key(
-        Key::new("projects".to_string(), Value::from_vec(vec![
-            Value::from_string("Yad".to_string()).unwrap()
-        ]).unwrap())
-    );
-
-    yad.add_row(johan_user);
-
-    let yad_bin = serialize(&yad).unwrap();
-    std::fs::write("./examples/my_first_yad.yad", &yad_bin).unwrap();
-
-    assert_eq!(yad, deserialize(yad_bin).unwrap());
-
-    println!("{}", yad);
+    // println!("String: {}", Value::try_from("Hello!").unwrap());
+    // println!("Unsigned Integer: {}", Value::from(324u16));
+    // println!("Signed Integer: {}", Value::from(-28i8));
+    // println!("Float: {}", Value::from(123.729304f32));
+    // println!("Bool: {}", Value::from(false));
+    println!("{:?}", Value::try_from(vec![Value::from(256u64), Value::from(255u8)]).unwrap());
+    // let vec: Vec<Value> = value.try_into().unwrap();
+    // println!("Vector: {:?}", vec);
 }

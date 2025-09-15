@@ -1,4 +1,4 @@
-use crate::core::Value;
+use crate::Value;
 
 /// Submodules providing specialized functions for different types of `Value`.
 ///
@@ -24,7 +24,6 @@ mod _string_functions;
 pub use _string_functions::*;
 mod _array_functions;
 pub use _array_functions::*;
-use crate::deserialize;
 
 /// Frees a `Value` previously allocated on the heap.
 ///

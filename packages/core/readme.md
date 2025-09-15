@@ -1,12 +1,13 @@
 # YAD Core
 
-**YAD** is a compact and efficient binary file format for structured data, inspired by JSON and BSON.
+**YAD Core** is a Rust crate focused exclusively on the low-level **Value** type, supporting numbers, strings, booleans, and arrays.
 
-This crate provides the **Rust core implementation** of the YAD format, including:
+> ⚠️ NOTE: THIS CRATE, WHICH PREVIOUSLY HANDLED FULL SERIALIZATION AND DESERIALIZATION, NOW ONLY MANAGES VALUES. The previous full functionality has been moved to `serde_yad`.
 
-- **Serialization & Deserialization** of YAD files
-- APIs to **create and manipulate rows, keys, and values**
-- **FFI bindings** for interoperability with other programming languages
+This crate provides:
+
+* The **Value** type for primitive and array data
+* A lightweight **FFI module** for cross-language interoperability
 
 📖 Learn more about the YAD project [here](https://github.com/KingsBeCattz/yad).
 
@@ -14,10 +15,9 @@ This crate provides the **Rust core implementation** of the YAD format, includin
 
 ## ✨ Features
 
-- Fast and lightweight binary format
-- Human-readable structure (similar to JSON) with efficient storage (similar to BSON)
-- Strongly typed rows, keys, and values
-- Cross-language support via **FFI**
+* Fast and lightweight representation of numbers, strings, booleans, and arrays
+* Strongly typed primitive values
+* Cross-language support via **FFI**
 
 ---
 
@@ -29,34 +29,21 @@ Add the crate to your `Cargo.toml`:
 cargo add yad_core
 ```
 
-### Example: Creating and serializing a YAD file
+### Example: Creating various Values
+
 ```rust
-use std::collections::HashMap;
-use yad_core::core::{Key, Row, Value};
-use yad_core::{deserialize, serialize, YAD};
+use yad_core::Value;
 
 fn main() {
-    let mut yad = YAD::new();
-
-    let mut johan_user = Row::new("johan".to_string(), HashMap::new());
-    johan_user.add_key(
-        Key::new("name".to_string(), Value::from_string("Johan".to_string()).unwrap())
-    );
-    johan_user.add_key(
-        Key::new("age".to_string(), Value::from_u8(17))
-    );
-
-    johan_user.add_key(
-        Key::new("projects".to_string(), Value::from_vec(vec![
-            Value::from_string("Yad".to_string()).unwrap()
-        ]).unwrap())
-    );
-
-    yad.add_row(johan_user);
-
-    let yad_bin = serialize(&yad).unwrap();
-    std::fs::write("./examples/my_first_yad.yad", &yad_bin).unwrap();
-
-    assert_eq!(yad, deserialize(yad_bin).unwrap());
+    println!("String: {}", Value::try_from("Hello!").unwrap());
+    println!("Unsigned Integer: {}", Value::from(324u16));
+    println!("Signed Integer: {}", Value::from(-28i8));
+    println!("Float: {}", Value::from(123.729304f32));
+    println!("Bool: {}", Value::from(false));
+    println!("Vector: {:?}", Value::try_from(vec![Value::from(256u64)]).unwrap());
 }
 ```
+
+### FFI Usage
+
+The `ffi` module provides interoperability with other languages, exposing functions to create and manipulate `Value` types from external code.

@@ -22,6 +22,18 @@ pub enum ByteLength {
     Eight = EIGHT_BYTE_LENGTH
 }
 
+impl ByteLength {
+    pub fn as_byte_count(&self) -> u8 {
+        match self {
+            ByteLength::Zero => 0,
+            ByteLength::One => 1,
+            ByteLength::Two => 2,
+            ByteLength::Four => 4,
+            ByteLength::Eight => 8
+        }
+    }
+}
+
 impl TryFrom<u8> for ByteLength {
     type Error = ErrorMessage;
     fn try_from(value: u8) -> Result<Self, Self::Error> {

@@ -1,12 +1,12 @@
 [package]
 name = "yad_core"
-version = "1.1.0"
+version = "2.0.0"
 edition = "2024"
 authors = ["KingBCats <johan@ezezzz.xyz>"]
-description = "YAD is a lightweight binary file format designed for efficient data storage."
+description = "YAD-Core manages the lowest level of YAD, its primitive values."
 repository = "https://github.com/KingsBeCattz/yad"
 readme = "readme.md"
-keywords = ["yad", "nosql", "encode", "decode", "file_format"]
+keywords = ["yad", "encode", "decode", "file_format"]
 categories = ["encoding","data-structures"]
 license = "MIT OR Apache-2.0"
 documentation = "https://docs.rs/yad_core"
