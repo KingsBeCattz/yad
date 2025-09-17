@@ -40,6 +40,7 @@ pub const STRING_MAX_LENGTH_EXCEEDED: &'static str = "Your string exceeds the li
 pub const STRING_OF_LENGTH_ZERO: &'static str = "Your string must have at least one character.";
 pub const VEC_MAX_LENGTH_EXCEEDED: &'static str = "Your vector exceeds the limit of 2^64 − 1 items.";
 pub const VEC_OF_LENGTH_ZERO: &'static str = "Your vector must have at least one item.";
+pub const NESTING_TOO_DEEP: &'static str = "The provided YAD array exceeds the maximum allowed nesting depth.";
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct ErrorMessage(pub &'static str);
