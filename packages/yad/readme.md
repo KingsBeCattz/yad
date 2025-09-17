@@ -37,19 +37,21 @@ yad_core = "2.0.0"
 use serde_yad::{encode_value, encode_key, decode_value, decode_key};
 use yad_core::{Value, Key};
 
-let key = Key {
-    name: "score".to_string(),
-    value: Value::from(100),
-};
+fn main () {
+    let key = Key {
+        name: "score".to_string(),
+        value: Value::from(100),
+    };
 
-// Encode key to binary
-let bytes = encode_key(&key).unwrap();
+    // Encode key to binary
+    let bytes = encode_key(&key).unwrap();
 
-// Decode back to Key
-let decoded_key = decode_key(&bytes).unwrap();
+    // Decode back to Key
+    let decoded_key = decode_key(&bytes).unwrap();
 
-assert_eq!(decoded_key.name, key.name);
-assert_eq!(decoded_key.value, key.value);
+    assert_eq!(decoded_key.name, key.name);
+    assert_eq!(decoded_key.value, key.value);
+}
 ```
 
 ### Serialize a `Row` with multiple `Key`s
@@ -58,22 +60,24 @@ assert_eq!(decoded_key.value, key.value);
 use serde_yad::{encode_row, decode_row};
 use yad_core::{Row, Key, Value};
 
-let row = Row {
-    name: "player1".to_string(),
-    keys: vec![
-        Key { name: "score".into(), value: Value::from(100) },
-        Key { name: "level".into(), value: Value::from(5) },
-    ],
-};
+fn main() {
+    let row = Row {
+        name: "player1".to_string(),
+        keys: vec![
+            Key { name: "score".into(), value: Value::from(100) },
+            Key { name: "level".into(), value: Value::from(5) },
+        ],
+    };
 
-// Encode row
-let bytes = encode_row(&row).unwrap();
+    // Encode row
+    let bytes = encode_row(&row).unwrap();
 
-// Decode row
-let decoded_row = decode_row(&bytes).unwrap();
+    // Decode row
+    let decoded_row = decode_row(&bytes).unwrap();
 
-assert_eq!(decoded_row.name, row.name);
-assert_eq!(decoded_row.keys.len(), row.keys.len());
+    assert_eq!(decoded_row.name, row.name);
+    assert_eq!(decoded_row.keys.len(), row.keys.len());
+}
 ```
 
 ---
@@ -134,34 +138,6 @@ This example demonstrates:
 - `KEY_NAME_HEADER (0x70)` – key name follows.
 
 Each `Value` type has its own byte representation for efficient storage.
-
----
-
-## Error Handling
-
-All encoding/decoding functions return `Result<_, ErrorMessage>`.  
-Common errors include:
-
-- `MALFORMED_ROW_VECTOR` – invalid row binary.
-- `MALFORMED_KEY_VECTOR` – invalid key binary.
-- `MALFORMED_ROW_NAME_VECTOR` / `MALFORMED_KEY_NAME_VECTOR` – invalid names.
-- `Value` type mismatches.
-
-```rust
-use serde_yad::{decode_key, ErrorMessage};
-
-match decode_key(&invalid_bytes) {
-    Ok(key) => println!("Decoded key: {:?}", key),
-    Err(err) => eprintln!("Failed to decode: {:?}", err),
-}
-```
-
----
-
-## Contributing
-
-Contributions are welcome! Open an issue or submit a pull request.  
-Ensure that new features preserve the binary format and add tests for all encoding/decoding operations.
 
 ---
 
