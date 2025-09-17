@@ -13,7 +13,6 @@ With **serde_yad**, you can serialize and deserialize entire YAD files, individu
 - Handles nested structures and arrays.
 - Supports integers, floats (F8/F16/F32/F64), booleans, and strings.
 - Can serialize/deserialize entire YAD files or individual elements.
-- No external dependencies beyond Rust standard library.
 
 ---
 
@@ -136,6 +135,7 @@ This example demonstrates:
 - `ROW_END_HEADER (0xF2)` – marks the end of a row.
 - `KEY_START_HEADER (0xF3)` – marks the beginning of a key.
 - `KEY_NAME_HEADER (0x70)` – key name follows.
+- `KEY_END_HEADER (0xF4)` – marks the end of a key.
 
 Each `Value` type has its own byte representation for efficient storage.
 
@@ -143,4 +143,4 @@ Each `Value` type has its own byte representation for efficient storage.
 
 ## License
 
-MIT License. See [LICENSE](LICENSE) for details.
+MIT License. See [LICENSE](license) for details.

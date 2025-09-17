@@ -1,6 +1,6 @@
 [package]
 name = "serde_yad"
-version = "1.0.0"
+version = "1.0.0-a"
 edition = "2024"
 authors = ["KingBCats <johan@ezezzz.xyz>"]
 description = "Serde_YAD serializes and deserializes YAD files."
