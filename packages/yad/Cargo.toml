@@ -1,0 +1,26 @@
+[package]
+name = "serde_yad"
+version = "0.1.0"
+edition = "2024"
+authors = ["KingBCats <johan@ezezzz.xyz>"]
+description = "Serde_YAD serializes and deserializes YAD files."
+repository = "https://github.com/KingsBeCattz/yad"
+readme = "readme.md"
+keywords = ["yad", "encode", "decode", "file_format"]
+categories = ["encoding","data-structures"]
+license = "MIT OR Apache-2.0"
+documentation = "https://docs.rs/serde_yad"
+
+[dependencies]
+yad_core = "=2.0.0"
+
+[lib]
+name = "serde_yad"
+crate-type = ["cdylib", "rlib"]
+
+[[example]]
+name = "example"
+path = "examples/main.rs"
+
+[package.metadata.docs.rs]
+rustdoc-args = ["--generate-link-to-definition"]
