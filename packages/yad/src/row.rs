@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+use std::collections::BTreeMap;
 use std::fmt::{Debug, Display, Formatter};
 use yad_core::constants::error::ErrorMessage;
 use yad_core::constants::length::ByteLength;
@@ -23,14 +23,14 @@ use crate::{encode_name, segment_keys, usize_from_slice_bytes};
 ///
 /// # Fields
 /// - `name`: A unique string identifier for the row.
-/// - `keys`: A [`HashMap`] mapping key names to their associated [`Key`] objects.
+/// - `keys`: A [`BTreeMap`] mapping key names to their associated [`Key`] objects.
 #[derive(Clone, Eq, PartialEq)]
 pub struct Row {
     /// The row’s unique identifier.
     pub name: String,
     /// The collection of keys belonging to this row.
     /// Keys are stored in a hashmap for fast lookup by name.
-    pub keys: HashMap<String, Key>,
+    pub keys: BTreeMap<String, Key>,
 }
 
 impl Row {
@@ -69,17 +69,17 @@ impl Row {
     pub fn new_empty<S: ToString>(name: S) -> Self {
         Self {
             name: name.to_string(),
-            keys: HashMap::new(),
+            keys: BTreeMap::new(),
         }
     }
 
     /// Returns an immutable reference to the row’s key collection.
-    pub fn get_keys(&self) -> &HashMap<String, Key> {
+    pub fn get_keys(&self) -> &BTreeMap<String, Key> {
         &self.keys
     }
 
     /// Returns a mutable reference to the row’s key collection.
-    pub fn get_keys_mut(&mut self) -> &mut HashMap<String, Key> {
+    pub fn get_keys_mut(&mut self) -> &mut BTreeMap<String, Key> {
         &mut self.keys
     }
 

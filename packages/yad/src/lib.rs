@@ -4,7 +4,7 @@ pub mod key;
 pub mod row;
 pub mod ffi;
 
-use std::collections::HashMap;
+use std::collections::BTreeMap;
 use std::fmt::{Debug, Display, Formatter};
 use yad_core;
 use yad_core::constants::error::ErrorMessage;
@@ -178,7 +178,7 @@ pub struct YAD {
     /// Document version
     pub version: Version,
     /// Rows in the document, keyed by row name
-    pub rows: HashMap<String, Row>,
+    pub rows: BTreeMap<String, Row>,
 }
 
 impl YAD {
@@ -193,17 +193,17 @@ impl YAD {
     /// Constructs an empty YAD document for a given version.
     pub fn new_empty(version: Version) -> Self {
         Self {
-            version, rows: HashMap::new()
+            version, rows: BTreeMap::new()
         }
     }
 
     /// Returns an immutable reference to the rows.
-    pub fn get_rows(&self) -> &HashMap<String, Row> {
+    pub fn get_rows(&self) -> &BTreeMap<String, Row> {
         &self.rows
     }
 
     /// Returns a mutable reference to the rows.
-    pub fn get_rows_mut(&mut self) -> &mut HashMap<String, Row> {
+    pub fn get_rows_mut(&mut self) -> &mut BTreeMap<String, Row> {
         &mut self.rows
     }
 
