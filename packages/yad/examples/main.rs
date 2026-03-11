@@ -1,13 +1,17 @@
+use std::path::PathBuf;
 use yad_core::Value;
 use serde_yad::key::Key;
 use serde_yad::{Version, YAD};
 
-/// Creates a new YAD file and writes it to disk.
+/// Creates a new [`YAD`] document in memory with version 1.0.0 and a sample row.
 ///
-/// This function demonstrates how to create an empty YAD structure,
-/// insert a single row with a key/value pair, and serialize it to a file.
-fn write_a_new_yad() {
-    // Create a new empty YAD structure with version 1.0.0
+/// The document contains a single row named `"johan"` with two keys:
+/// - `"name"`: a UTF-8 string value `"Johan"`
+/// - `"age"`: an unsigned 8-bit integer value `17`
+///
+/// # Returns
+/// A populated [`YAD`] document ready to be serialized or inspected.
+fn create_a_new_yad() -> YAD {
     let mut yad = YAD::new_empty(Version {
         major: 1,
         minor: 0,
@@ -15,38 +19,52 @@ fn write_a_new_yad() {
         beta: 0,
     });
 
-    // Insert a row named "johan" with a single key/value pair
-    // Key "name" has the value "Johan" converted to a YAD Value
     yad.insert_row("johan", vec![
-        Key::new("name", Value::try_from("Johan").unwrap())
+        Key::new("name", Value::try_from("Johan").unwrap()),
+        Key::new("age", Value::try_from(17u8).unwrap())
     ]);
 
-    // Path where the serialized YAD file will be saved
-    let yad_path = "./examples/my_first_yad.yad";
-
-    // Serialize the YAD structure to bytes and write to file
-    std::fs::write(yad_path, yad.serialize().unwrap()).unwrap();
+    yad
 }
 
-/// Reads a YAD file from disk and prints its content.
+/// Serializes a [`YAD`] document and writes it to the given path.
 ///
-/// This function demonstrates deserialization of a YAD file
-/// and displaying its content in a human-readable format.
-fn read_a_yad() {
-    // Path to the YAD file to read
-    let yad_path = "./examples/example.yad";
+/// # Arguments
+/// - `yad`: Reference to the document to serialize.
+/// - `path_buf`: Destination path of the file. The file will be created or overwritten.
+///
+/// # Panics
+/// If serialization fails or if the file cannot be written.
+fn write_a_new_yad(yad: &YAD, path_buf: &PathBuf) {
+    std::fs::write(path_buf, yad.serialize().unwrap()).unwrap();
+}
 
-    // Read the file into a byte vector and deserialize it into a YAD object
-    let yad = YAD::deserialize(std::fs::read(yad_path).unwrap()).unwrap();
-
-    // Print the YAD structure
-    println!("{}", yad);
+/// Reads a `.yad` file from disk and deserializes it into a [`YAD`] document.
+///
+/// # Arguments
+/// - `path_buf`: Path to the `.yad` file to read.
+///
+/// # Returns
+/// The deserialized [`YAD`] document.
+///
+/// # Panics
+/// Panics if the file cannot be read or if the bytes are not a valid YAD document.
+fn read_a_yad(path_buf: &PathBuf) -> YAD {
+    YAD::deserialize(std::fs::read(path_buf).unwrap()).unwrap()
 }
 
 fn main() {
-    // Write a new YAD file to disk
-    write_a_new_yad();
+    let yad = create_a_new_yad();
+    println!("Created yad:\n{}", yad);
 
-    // Read and print a YAD file from disk
-    read_a_yad();
+    let yad_path = PathBuf::from("./examples/my_first_yad.yad");
+
+    write_a_new_yad(&yad, &yad_path);
+    println!("Wrote yad to {}", yad_path.display());
+
+    // Read the file back from the disk and verify round-trip consistency.
+    let read_yad = read_a_yad(&yad_path);
+    println!("Read yad:\n{}", &read_yad);
+
+    assert_eq!(yad, read_yad)
 }
